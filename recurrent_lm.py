@@ -357,9 +357,6 @@ class RecurrentLM(Model):
         self.x_cost_mask = T.matrix('cost_mask')
         self.x_max_length = T.iscalar('x_max_length')
         
-        # Store previous h
-        self.previous_h = theano.shared(value=numpy.zeros((self.bs, self.qdim), dtype='float32'), name='prev_h')
-        
         # The training is done with a trick. We append a special </q> at the beginning of the session
         # so that we can predict also the first query in the session starting from the session beginning token (</q>).
         self.aug_x_data = T.concatenate([T.alloc(np.int32(self.eos_sym), 1, self.x_data.shape[1]), self.x_data])
