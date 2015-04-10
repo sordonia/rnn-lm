@@ -224,7 +224,7 @@ class LanguageModel(ComponentBase):
     
     def build_sampler(self, n_samples, n_steps):
         # For the naive sampler, the states are:
-        # 1) a vector [<q>] * n_samples to seed the sampling
+        # 1) a vector [<s>] * n_samples to seed the sampling
         # 2) a vector of [ 0. ] * n_samples for the log_probs
         # 3) prev_h hidden layers
         # TODO: This does not support the document bias
@@ -353,7 +353,6 @@ class RecurrentLM(Model):
         self.params = self.language_model.params 
         
         self.x_data = T.imatrix('x_data')
-        self.x_reset = T.vector('x_reset')
         self.x_cost_mask = T.matrix('cost_mask')
         self.x_max_length = T.iscalar('x_max_length')
         
