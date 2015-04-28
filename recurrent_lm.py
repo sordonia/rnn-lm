@@ -338,9 +338,9 @@ class RecurrentLM(Model):
         self.str_to_idx = dict([(tok, tok_id) for tok, tok_id, _ in raw_dict])
         self.idx_to_str = dict([(tok_id, tok) for tok, tok_id, freq in raw_dict])
 
-        if '<s>' not in self.str_to_idx \
-           or '</s>' not in self.str_to_idx:
-                raise Exception("Error, malformed dictionary!")
+        # if '<s>' not in self.str_to_idx \
+        #   or '</s>' not in self.str_to_idx:
+        #        raise Exception("Error, malformed dictionary!")
          
         # Number of words in the dictionary 
         self.idim = len(self.str_to_idx)
